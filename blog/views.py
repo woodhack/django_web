@@ -9,3 +9,11 @@ def home(request):
 
 def about(request):
     return render(request, 'blog/about.html', {'title':'About'})
+
+def detail_blog_view(request, slug):
+
+    context = {}
+
+    blog_post = get_object_or_404(BlogPost, slug=slug)
+    context['blog_post'] = blog_post
+    return render(request, 'blog/detail_blog.html', context)
